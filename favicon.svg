@@ -1,0 +1,15 @@
+<svg width="150" height="75" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#cc0000;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#ff0000;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#880000;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    <text x="10" y="130" font-family="Arial, sans-serif" font-weight="bold" font-size="95" fill="white">
+        Shellpi
+    </text>
+    <path d="M120,20 Q450,20 450,100 Q450,180 280,190 Q400,160 410,100 Q410,40 120,20"
+        fill="url(#redGradient)" />
+    <circle cx="338" cy="70" r="10" fill="#cc0000" />
+</svg>
