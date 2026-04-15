@@ -4,166 +4,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHELLPI | Loja Oficial</title>
+    <title>SHELLPI | Especialistas em Tecnologia e Acessórios</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A SHELLPI oferece soluções completas para seus eletrônicos em Barueri. Upgrades de notebook, manutenção de dispositivos, venda de acessórios e compra de aparelhos usados.">
+    <meta name="keywords" content="tecnologia, acessórios celular, upgrade notebook, compra de eletrônicos, manutenção preventiva, barueri, shellpi">
+    <meta name="author" content="SHELLPI">
+    <link rel="canonical" href="https://sualoja.com.br">
+
+    <!-- Social Media Meta Tags (OG) -->
+    <meta property="og:title" content="SHELLPI | Soluções Inteligentes em Eletrônicos">
+    <meta property="og:description" content="Dê uma vida nova ao seu dispositivo. Especialistas em manutenção e upgrades em Barueri.">
+    <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=perm_phone_msg" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #38bdf8;
+            --primary-dark: #0ea5e9;
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --text-white: #ffffff;
+            --text-gray: #94a3b8;
         }
 
         body {
-            background: #0f172a;
-            color: #fff;
+            background: var(--bg-main);
+            color: var(--text-white);
+            line-height: 1.6;
         }
 
         header {
             background: linear-gradient(90deg, #0f172a, #1e293b);
-            padding: 20px 10%;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #38bdf8;
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
 
         nav a {
             margin-left: 20px;
             text-decoration: none;
-            color: #fff;
+            color: var(--text-white);
             font-weight: 500;
             transition: 0.3s;
+            font-size: 0.9rem;
         }
 
         nav a:hover {
-            color: #38bdf8;
+            color: var(--primary);
         }
 
         .hero {
             text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(to right, #1e293b, #0f172a);
+            padding: 120px 20px;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--text-gray);
         }
 
         .btn {
-            background: #38bdf8;
-            padding: 12px 25px;
+            background: var(--primary);
+            padding: 14px 30px;
             border: none;
             border-radius: 8px;
             color: #000;
-            font-weight: 600;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .btn:hover {
-            background: #0ea5e9;
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            display: block;
+            margin: 10px auto;
         }
 
         .products {
-            padding: 60px 10%;
+            padding: 80px 8%;
         }
 
-        .products h2 {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        /* Container flexível que centraliza o conteúdo */
         .grid {
-            display: flex;
-            flex-wrap: wrap;
-            /* Permite quebrar linha */
-            justify-content: center;
-            /* Centraliza os itens na linha */
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            justify-items: center;
         }
 
-        /* Card ajustado para ser responsivo e flexível */
         .card {
-            background: #1e293b;
-            padding: 20px;
-            border-radius: 12px;
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 16px;
             text-align: center;
-            transition: 0.3s;
-
-            /* Flex-basis define o tamanho ideal (250px), flex-grow permite crescer */
-            flex: 1 1 250px;
-            /* Max-width evita que um card sozinho ocupe a largura toda da tela */
-            max-width: 320px;
-
-            /* Garante que o conteúdo interno (botão) fique alinhado */
+            transition: 0.4s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
         }
 
         .card img {
             width: 100%;
-            height: 180px;
-            /* Altura fixa para manter simetria */
+            height: 200px;
             object-fit: cover;
-            /* Não distorce a imagem */
-            border-radius: 10px;
-            margin-bottom: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .card h3 {
+            margin-bottom: 12px;
+            font-size: 1.25rem;
         }
 
-        .price {
-            font-size: 15px;
-            margin: 10px 0;
-            color: #38bdf8;
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .trust-section {
+            background: #1e293b;
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .trust-item h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
         }
 
         footer {
-            background: #0f172a;
-            padding: 30px;
-            text-align: center;
-            margin-top: 40px;
+            background: #020617;
+            padding: 60px 8% 20px;
             border-top: 1px solid #1e293b;
         }
 
-        .cart {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #38bdf8;
-            color: #000;
-            padding: 15px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
+        .footer-info h4 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
 
-        .material-symbols-outlined {
-            font-variation-settings:
-                'FILL' 0,
-                'wght' 400,
-                'GRAD' 0,
-                'opsz' 24
+        .footer-info p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.8rem;
+            color: #475569;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 10px;
+            }
+            nav {
+                margin-top: 10px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+            .hero {
+                padding: 80px 20px;
+            }
         }
     </style>
 </head>
@@ -171,8 +253,8 @@
 <body>
 
     <header>
-        <div class="logo">
-            <svg width="150" height="75" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+        <div class="logo-container">
+            <svg width="120" height="60" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" style="stop-color:#cc0000;stop-opacity:1" />
@@ -180,129 +262,173 @@
                         <stop offset="100%" style="stop-color:#880000;stop-opacity:1" />
                     </linearGradient>
                 </defs>
-
-                <text x="10" y="130" font-family="Arial, sans-serif" font-weight="bold" font-size="95" fill="white">
-                    Shellpi
-                </text>
-
-                <path d="M120,20 Q450,20 450,100 Q450,180 280,190 Q400,160 410,100 Q410,40 120,20"
-                    fill="url(#redGradient)" />
-
+                <text x="10" y="130" font-family="Arial, sans-serif" font-weight="bold" font-size="95" fill="white">Shellpi</text>
+                <path d="M120,20 Q450,20 450,100 Q450,180 280,190 Q400,160 410,100 Q410,40 120,20" fill="url(#redGradient)" />
                 <circle cx="338" cy="70" r="10" fill="#cc0000" />
             </svg>
         </div>
         <nav>
             <a href="#">Início</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#contato">Contato</a>
+            <a href="#servicos">Soluções</a>
+            <a href="#sobre">Por que nós?</a>
+            <a href="#contato">Unidades</a>
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Seu eletrônico parou? A SHELLPI resolve! 🛠️</h1>
-        <p>
-            Sabe aquele celular com a tela quebrada, o videogame que não
-            liga mais ou aquele aparelho que caiu na água?
-            <br />
-            Não precisa se desesperar! Aqui na SHELLPI, somos
-            especialistas em dar vida nova aos seus equipamentos favoritos.
-        </p>
-        <a class="btn" href="#servicos">Ver Serviços</a>
-    </section>
+    <main>
+        <section class="hero">
+            <h1>Sua Tecnologia em Boas Mãos <span class="material-symbols-outlined" style="font-size: 55px; font-weight: bolder;">construction</span></h1>
+            <p>
+                Especialistas em renovação e manutenção de dispositivos. 
+                Seja para um upgrade de performance no seu notebook ou proteção para seu smartphone, 
+                a SHELLPI oferece soluções ágeis e transparentes.
+            </p>
+            <a class="btn" href="#servicos">Conhecer Soluções</a>
+        </section>
 
-    <section class="products" id="servicos">
-        <h2>Nossos Serviços</h2>
-
-        <div class="grid">
-            <div class="card">
-                <img src="./imgs/imgTecnicoCelulares.jpeg" alt="Reparo de Celular">
-                <h3>Celulares</h3>
-                <p class="price">Troca de telas, baterias e películas de proteção.</p>
-                <button class="btn" onclick="enviarWhatsapp(1)">
-                    <span class="material-symbols-outlined">perm_phone_msg</span>
-                    Contato
-                </button>
+        <section class="trust-section" id="sobre">
+            <h2 class="section-title">Excelência Técnica</h2>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    
+                    <span class="material-symbols-outlined" style="font-size: 40px; color: var(--primary);">verified</span>
+                    <h4>Garantia de Qualidade</h4>
+                    <p>Processos validados e peças selecionadas.</p>
+                </div>
+                <div class="trust-item">
+                    <span class="material-symbols-outlined" style="font-size: 40px; color: var(--primary);">bolt</span>
+                    <h4>Agilidade</h4>
+                    <p>Atendimento express para sua rotina não parar.</p>
+                </div>
+                <div class="trust-item">
+                    <span class="material-symbols-outlined" style="font-size: 40px; color: var(--primary);">location_on</span>
+                    <h4>Localização</h4>
+                    <p>Fácil acesso no coração de Barueri.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="card">
-                <img src="./imgs/imgDesoxidacaoCelular.jpg" alt="Desoxidacao Celular">
-                <h3>Reparo Avançado</h3>
-                <p class="price">Conserto e desoxidação de placas (salvamos aparelhos molhados!).</p>
-                <button class="btn" onclick="enviarWhatsapp(2)">
-                    <span class="material-symbols-outlined">perm_phone_msg</span>
-                    Contato
-                </button>
-            </div>
+        <section class="products" id="servicos">
+            <h2 class="section-title">Nossas Soluções</h2>
 
-            <div class="card">
-                <img src="./imgs/imgVideoGame.png" alt="Video Game">
-                <h3>Videogames</h3>
-                <p class="price">Assistência completa para o seu console não parar na hora do jogo.</p>
-                <button class="btn" onclick="enviarWhatsapp(3)">
-                    <span class="material-symbols-outlined">perm_phone_msg</span>
-                    Contato
-                </button>
-            </div>
+            <div class="grid">
+                <!-- Card 1 -->
+                <article class="card">
+                    <img src="./imgs/imgTecnicoCelulares.jpeg" alt="Manutenção de Dispositivos Móveis">
+                    <h3>Dispositivos Móveis</h3>
+                    <p>Manutenção preventiva, renovação de telas e substituição de componentes de energia.</p>
+                    <button class="btn" onclick="enviarWhatsapp(1)">
+                        <span class="material-symbols-outlined">
+perm_phone_msg
+</span>
+                        Consultar
+                    </button>
+                </article>
 
-            <div class="card">
-                <img src="./imgs/imgNovoVendaCelularVideoGame.jpeg" alt="Aparelhos Eletronicos">
-                <h3>Compra de Aparelhos</h3>
-                <p class="price">Venda seu Celular ou Videogame</p>
-                <button class="btn" onclick="enviarWhatsapp(4)">
-                    <span class="material-symbols-outlined">perm_phone_msg</span>
-                    Contato
-                </button>
-            </div>
+                <!-- Card 2 -->
+                <article class="card">
+                    <img src="./imgs/imgDesoxidacaoCelular.jpg" alt="Recuperação de Eletrônicos">
+                    <h3>Recuperação Avançada</h3>
+                    <p>Especialistas em desoxidação e diagnósticos de alta complexidade em placas lógicas.</p>
+                    <button class="btn" onclick="enviarWhatsapp(2)">
+                        <span class="material-symbols-outlined">perm_phone_msg</span>
+                        Consultar
+                    </button>
+                </article>
 
-            <div class="card">
-                <img src="./imgs/imgAparelhosEletronicos.webp" alt="Aparelhos Eletronicos">
-                <h3>Celulares Disponíveis</h3>
-                <p class="price">Celulares Novos e Seminovos</p>
-                <button class="btn" onclick="enviarWhatsapp(5)">
-                    <span class="material-symbols-outlined">perm_phone_msg</span>
-                    Contato
-                </button>
-            </div>
+                <!-- Card 3 -->
+                <article class="card">
+                    <img src="./imgs/imgVideoGame.png" alt="Suporte para Consoles">
+                    <h3>Entretenimento</h3>
+                    <p>Manutenção técnica para consoles de mesa e portáteis. Performance máxima para seus jogos.</p>
+                    <button class="btn" onclick="enviarWhatsapp(3)">
+                        <span class="material-symbols-outlined">perm_phone_msg</span>
+                        Consultar
+                    </button>
+                </article>
 
-            <div class="card">
-                <img src="./imgs/imgNovoAcessorios.jpeg" alt="Aparelhos Eletronicos">
-                <h3>Acessórios</h3>
-                <p class="price">Capinhas, películas, carregadores e muito mais para seu celular.</p>
-                <button class="btn" onclick="enviarWhatsapp(6)">
-                    <span class="material-symbols-outlined">perm_phone_msg</span>
-                    Contato
-                </button>
-            </div>
+                <!-- Card 4 -->
+                <article class="card">
+                    <img src="./imgs/imgNovoVendaCelularVideoGame.jpeg" alt="Compra e Venda de Usados">
+                    <h3>Circular Economy</h3>
+                    <p>Compramos seu equipamento usado. Avaliação justa e pagamento imediato.</p>
+                    <button class="btn" onclick="enviarWhatsapp(4)">
+                        <span class="material-symbols-outlined">perm_phone_msg</span>
+                        Avaliar
+                    </button>
+                </article>
 
-            <div class="card">
-                <img src="./imgs/imgEntregaRetirada.jpeg" alt="Aparelhos Eletronicos">
-                <h3>Entrega/Retirada Express</h3>
-                <p class="price">Entrega e Retirada de Aparelhos.</p>
-                <button class="btn" onclick="enviarWhatsapp(7)">
-                    <span class="material-symbols-outlined">perm_phone_msg</span>
-                    Contato
-                </button>
-            </div>
+                <!-- Card 5 -->
+                <article class="card">
+                    <img src="./imgs/imgAparelhosEletronicos.webp" alt="Venda de Smartphones">
+                    <h3>Loja de Equipamentos</h3>
+                    <p>Seleção premium de smartphones novos e seminovos com procedência garantida.</p>
+                    <button class="btn" onclick="enviarWhatsapp(5)">
+                        <span class="material-symbols-outlined">perm_phone_msg</span>
+                        Ver Estoque
+                    </button>
+                </article>
 
-            <div class="card">
-                <img src="./imgs/imgAssistenciaNotebook.jpeg" alt="Aparelhos Eletronicos">
-                <h3>Assistencia de Notebook</h3>
-                <p class="price">Formatação, Troca de HD/SSD, Limpesa Interna e Upgrades.</p>
-                <button class="btn" onclick="enviarWhatsapp(8)">
-                    <span class="material-symbols-outlined">perm_phone_msg</span>
-                    Contato
-                </button>
+                <!-- Card 6 -->
+                <article class="card">
+                    <img src="./imgs/imgNovoAcessorios.jpeg" alt="Acessórios Premium">
+                    <h3>Acessórios Premium</h3>
+                    <p>Proteção e estilo: Capas, películas de alta resistência e carregadores certificados.</p>
+                    <button class="btn" onclick="enviarWhatsapp(6)">
+                        <span class="material-symbols-outlined">perm_phone_msg</span>
+                        Ver Modelos
+                    </button>
+                </article>
+
+                <!-- Card 7 -->
+                <article class="card">
+                    <img src="./imgs/imgEntregaRetirada.jpeg" alt="Delivery de Serviços">
+                    <h3>Shellpi Express</h3>
+                    <p>Coletamos e entregamos seu dispositivo com total segurança e comodidade.</p>
+                    <button class="btn" onclick="enviarWhatsapp(7)">
+                        <span class="material-symbols-outlined">perm_phone_msg</span>
+                        Agendar
+                    </button>
+                </article>
+
+                <!-- Card 8 -->
+                <article class="card">
+                    <img src="./imgs/imgAssistenciaNotebook.jpeg" alt="Upgrade de Notebooks">
+                    <h3>Computação & Performance</h3>
+                    <p>Upgrades de hardware (SSD/RAM), formatação e limpeza interna especializada.</p>
+                    <button class="btn" onclick="enviarWhatsapp(8)">
+                        <span class="material-symbols-outlined">perm_phone_msg</span>
+                        Orçamento
+                    </button>
+                </article>
             </div>
-            
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer id="contato">
-        <p>© 2026 SHELLPI - Todos os direitos reservados</p>
-        <p>Email: lara_campos@weatherford.com</p>
-        <p>Telefone: (11) 4382-9597</p>
-        <p>Whatsapp: (11) 94702-9561</p>
-        <p>Local: R. Duque de Caxias, 127 - Vila Conceicao, Barueri - SP, 06401-010</p>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h4>Contatos Oficiais</h4>
+                <p><strong>WhatsApp:</strong> (11) 94702-9561</p>
+                <p><strong>Fixo:</strong> (11) 4382-9597</p>
+                <p><strong>Email:</strong> shellpi.atendimento@gmail.com</p>
+            </div>
+            <div class="footer-info">
+                <h4>Onde Estamos</h4>
+                <p>R. Duque de Caxias, 127</p>
+                <p>Vila Conceição, Barueri - SP</p>
+                <p>CEP: 06401-010</p>
+            </div>
+            <div class="footer-info">
+                <h4>Horário de Funcionamento</h4>
+                <p>Segunda a Sexta: 09h às 18h</p>
+                <p>Sábado: 09h às 13h</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2026 SHELLPI - Especialistas em Manutenção e Upgrades. As marcas mencionadas são propriedades de seus respectivos donos.</p>
+        </div>
     </footer>
 
 
@@ -330,5 +456,4 @@
     </script>
 
 </body>
-
 </html>
