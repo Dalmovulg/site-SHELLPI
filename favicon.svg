@@ -11,5 +11,5 @@
     </text>
     <path d="M120,20 Q450,20 450,100 Q450,180 280,190 Q400,160 410,100 Q410,40 120,20"
         fill="url(#redGradient)" />
-    <circle cx="338" cy="70" r="10" fill="#cc0000" />
+    <circle cx="326" cy="62" r="10" fill="#cc0000" />
 </svg>
