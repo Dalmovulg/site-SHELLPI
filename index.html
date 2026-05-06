@@ -220,21 +220,40 @@
             margin: 10px 0;
         }
 
-        /* --- Estilos do Carrossel de Depoimentos --- */
+        /* --- Estilos do Carrossel de Depoimentos Atualizados --- */
         .testimonial-carousel {
             overflow: hidden;
             padding: 40px 0;
             background: rgba(15, 23, 42, 0.5);
             position: relative;
+            white-space: nowrap;
         }
 
+        /* Máscara de degradê nas laterais para suavizar entrada/saída */
+        .testimonial-carousel::before,
+        .testimonial-carousel::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+        }
+        .testimonial-carousel::before { left: 0; background: linear-gradient(to right, var(--bg-main), transparent); }
+        .testimonial-carousel::after { right: 0; background: linear-gradient(to left, var(--bg-main), transparent); }
+
         .carousel-track {
-            display: flex;
-            width: calc(300px * 16);
-            /* Espaço para duplicar para loop infinito */
-            animation: scroll 40s linear infinite;
+            display: inline-flex;
             gap: 20px;
-            padding: 20px;
+            padding: 10px 0;
+        }
+
+        .scroll-left {
+            animation: scrollLeft 30s linear infinite;
+        }
+
+        .scroll-right {
+            animation: scrollRight 30s linear infinite;
         }
 
         .carousel-track:hover {
@@ -242,13 +261,14 @@
         }
 
         .testimonial-card {
-            min-width: 300px;
-            max-width: 300px;
+            width: 320px;
             background: var(--bg-card);
             padding: 25px;
             border-radius: 15px;
             border-left: 4px solid var(--primary);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            white-space: normal; /* Permite que o texto quebre dentro do card */
+            flex-shrink: 0;
         }
 
         .testimonial-card .stars {
@@ -264,21 +284,21 @@
             margin-bottom: 15px;
         }
 
-        .testimonial-card span.author {
+        .testimonial-card .author {
             display: block;
             font-weight: 600;
             font-size: 0.85rem;
             color: var(--primary);
         }
 
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
+        @keyframes scrollLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-340px * 4)); } /* Largura do card + gap (320+20) * quantidade de itens originais */
+        }
 
-            100% {
-                transform: translateX(calc(-320px * 4));
-            }
+        @keyframes scrollRight {
+            0% { transform: translateX(calc(-340px * 4)); }
+            100% { transform: translateX(0); }
         }
 
         /* --- Balão WhatsApp Fixo --- */
@@ -293,7 +313,7 @@
             border-radius: 50px;
             text-align: center;
             font-size: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
             z-index: 2000;
             display: flex;
             align-items: center;
@@ -346,7 +366,6 @@
             color: #475569;
         }
 
-        /* Mobile specific adjustments */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -379,7 +398,7 @@
                 bottom: 20px;
                 right: 20px;
             }
-
+            
             .whatsapp-float svg {
                 width: 26px;
                 height: 26px;
@@ -454,10 +473,10 @@
             </div>
         </section>
 
-        <!-- CARROSSEL 1 - MEIO DA PÁGINA -->
+        <!-- CARROSSEL 1 - DA DIREITA PARA ESQUERDA -->
         <section class="testimonial-carousel">
-            <div class="carousel-track">
-                <!-- Itens Originais -->
+            <div class="carousel-track scroll-left">
+                <!-- Itens Originais (4) -->
                 <div class="testimonial-card">
                     <span class="stars">⭐⭐⭐⭐⭐</span>
                     <p>Troquei a tela do meu iPhone e ficou perfeito. Atendimento rápido e com garantia. Recomendo!</p>
@@ -478,7 +497,7 @@
                     <p>Comprei capinha e película, qualidade muito boa. Já virei cliente!</p>
                     <span class="author">Patrícia Lima – Alphaville</span>
                 </div>
-                <!-- Clones para loop -->
+                <!-- Duplicação para loop infinito (mesmos 4) -->
                 <div class="testimonial-card">
                     <span class="stars">⭐⭐⭐⭐⭐</span>
                     <p>Troquei a tela do meu iPhone e ficou perfeito. Atendimento rápido e com garantia. Recomendo!</p>
@@ -489,12 +508,21 @@
                     <p>Comprei meu celular na Shellpi e fui muito bem atendida. Produto top e preço justo!</p>
                     <span class="author">Juliana Souza – Jardim Belval</span>
                 </div>
+                <div class="testimonial-card">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <p>Levei meu celular que não ligava e resolveram no mesmo dia. Serviço de confiança!</p>
+                    <span class="author">Rafael Oliveira – Centro Barueri</span>
+                </div>
+                <div class="testimonial-card">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <p>Comprei capinha e película, qualidade muito boa. Já virei cliente!</p>
+                    <span class="author">Patrícia Lima – Alphaville</span>
+                </div>
             </div>
         </section>
 
         <section class="products" id="servicos">
             <h2 class="section-title">Nossas Soluções</h2>
-
             <div class="grid">
                 <!-- Card 1 -->
                 <article class="card">
@@ -586,10 +614,10 @@
             </div>
         </section>
 
-        <!-- CARROSSEL 2 - FINAL DA PÁGINA -->
-        <section class="testimonial-carousel" style="background: none; border-top: 1px solid rgba(255,255,255,0.05);">
-            <div class="carousel-track" style="animation-direction: reverse;">
-                <!-- Itens Originais -->
+        <!-- CARROSSEL 2 - DA ESQUERDA PARA DIREITA -->
+        <section class="testimonial-carousel" style="background: none;">
+            <div class="carousel-track scroll-right">
+                <!-- Itens Originais (4) -->
                 <div class="testimonial-card">
                     <span class="stars">⭐⭐⭐⭐⭐</span>
                     <p>Vendi meu videogame e recebi na hora. Avaliação justa e pagamento rápido.</p>
@@ -610,7 +638,7 @@
                     <p>Atendimento pelo WhatsApp foi rápido e direto. Já mandei consertar e ficou ótimo!</p>
                     <span class="author">Camila Santos – Carapicuíba</span>
                 </div>
-                <!-- Clones para loop -->
+                <!-- Duplicação para loop infinito -->
                 <div class="testimonial-card">
                     <span class="stars">⭐⭐⭐⭐⭐</span>
                     <p>Vendi meu videogame e recebi na hora. Avaliação justa e pagamento rápido.</p>
@@ -620,6 +648,16 @@
                     <span class="stars">⭐⭐⭐⭐⭐</span>
                     <p>Meu notebook estava muito lento, fizeram upgrade e ficou super rápido. Excelente trabalho!</p>
                     <span class="author">Fernanda Rocha – Jandira</span>
+                </div>
+                <div class="testimonial-card">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <p>Arrumaram meu celular que tinha molhado. Achei que tinha perdido, mas recuperaram!</p>
+                    <span class="author">Lucas Ferreira – Itapevi</span>
+                </div>
+                <div class="testimonial-card">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <p>Atendimento pelo WhatsApp foi rápido e direto. Já mandei consertar e ficou ótimo!</p>
+                    <span class="author">Camila Santos – Carapicuíba</span>
                 </div>
             </div>
         </section>
@@ -649,7 +687,7 @@
             <p>© 2026 SHELLPI - Especialistas em Manutenção e Upgrades. As marcas mencionadas são propriedades de seus respectivos donos.</p>
         </div>
     </footer>
-
+    
 
     <script>
         const lojaWhatsapp = '5511988038492';
